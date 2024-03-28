@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Entries</h1>
+    <div class="toggle">
+        <div class="active option">list</div>
+        <div class="option">map</div>
+    </div>
+    <table class="listview">
+        <thead>
+            <td>Title</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Created</td>
+        </thead>
+        {% for entry in entries %}
+            <tr>
+                <td><a href="{{ url_for('entry', entry_id=entry['id']) }}">{{ entry['title'] }}</a></td>
+                <td>{{ entry['lat'] }}</td>
+                <td>{{ entry['long'] }}</td>
+                <td>{{ entry['created'] }} by {{ entry['author'] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+{% endblock %}

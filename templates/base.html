@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Flask & MySQL Test Site</title>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="{{ url_for('about') }}">about</a>
+      <a href="{{ url_for('form') }}">new</a>
+      <a href="{{ url_for('list') }}">list</a>
+    </div>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+    <!-- Optional JavaScript -->
+  </body>
+</html>

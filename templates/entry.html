@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ entry['title'] }}</h1>
+    <div>
+        <span>Created {{ entry['created'] }} by {{ entry['author'] }}</span>
+        <span>{{ entry['lat'] }}</span>
+        <span>{{ entry['long'] }}</span>
+    </div>
+{% endblock %}
