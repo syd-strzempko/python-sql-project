@@ -6,18 +6,22 @@ body, .content, .nav {
     align-items: stretch;
     justify-content: center;
     text-align: center;
+    font-family: Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .5px;
 }
 .nav {
-    padding: 20px;
     flex-flow: row nowrap;
     background-color: grey;
-    column-gap: 10px;
 }
 .nav a {
     text-decoration: none;
 }
 .content {
     flex: 1 1 auto;
+    gap: 10px;
+    padding: 20px;
 }
 .toggle {
     display: flex;
@@ -47,4 +51,58 @@ label span {
 }
 label input {
     flex: 1 1 auto;
+}
+table {
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin: auto;
+}
+thead {
+    background-color: grey;
+}
+td {
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+#mapview {
+    margin: auto;
+}
+#map {
+    height: 400px;
+    width: 600px;
+}
+.markerWrapper {
+    padding: 2px;
+    background-color: green;
+    border-radius: 5px;
+}
+.markerWrapper:before {
+    content: "";
+    position: absolute;
+    right: 50%;
+    margin-right: -5px;
+    top: 100%;
+    border: solid 5px transparent;
+    border-top-color: green;
+    z-index: 1;
+}
+.markerIcon {
+    height: 22px;
+    width: 22px;
+}
+.markerIcon img {
+    max-width: 100%;
+    max-height: 100%;
+    color: white;
+}
+.markerWrapper .markerDetail, .markerWrapper.active .markerIcon {
+    display: none;
+}
+.markerWrapper.active .markerDetail {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
 }

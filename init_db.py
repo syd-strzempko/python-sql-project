@@ -1,27 +1,13 @@
-import sqlite3
+from models.entries import Entry
 
-connection = sqlite3.connect('database.db')
-
-with open('schema.sql') as f:
-    connection.executescript(f.read())
-
-cur = connection.cursor()
-
-cur.execute("INSERT INTO entries (title, lat, long, author) VALUES (?, ?, ?, ?)",
-            ('Southwest', 0, 0, 'Syd')
-            )
-
-cur.execute("INSERT INTO entries (title, lat, long, author) VALUES (?, ?, ?, ?)",
-            ('Northeast', 1, 1, 'Syd')
-            )
-
-cur.execute("INSERT INTO entries (title, lat, long, author) VALUES (?, ?, ?, ?)",
-            ('Southeast', 0, 1, 'Syd')
-            )
-
-cur.execute("INSERT INTO entries (title, lat, long, author) VALUES (?, ?, ?, ?)",
-            ('Northwest', 1, 0, 'Brandon')
-            )
-
-connection.commit()
-connection.close()
+def init_db_values(db):
+    db.drop_all()
+    db.create_all()
+    entries = [
+        Entry(title='Southwest', lat=29, long=-98, author='Syd'),
+        Entry(title='Northeast', lat=31, long=-96, author='Syd'),
+        Entry(title='Southeast', lat=29, long=-96, author='Syd'),
+        Entry(title='Northwest', lat=31, long=-98, author='Brandon'),
+    ]
+    db.session.add_all(entries)
+    db.session.commit()

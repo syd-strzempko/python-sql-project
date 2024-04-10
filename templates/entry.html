@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
-
+{% set active_page = '' %}
 {% block content %}
-    <h1>{{ entry['title'] }}</h1>
+    <h2>{{ entry['title'] }}</h2>
     <div>
         <span>Created {{ entry['created'] }} by {{ entry['author'] }}</span>
-        <span>{{ entry['lat'] }}</span>
-        <span>{{ entry['long'] }}</span>
+        <br />
+        Position (lat, long):
+        <span>[{{ entry['lat'] }},</span>
+        <span>{{ entry['long'] }}]</span>
     </div>
+    <a href="{{ url_for('list') }}"> back to list </a>
 {% endblock %}
