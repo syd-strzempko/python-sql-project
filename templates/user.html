@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% set active_page = '' %}
+{% block content %}
+    <h2>{{ user.name }}</h2>
+    <table id="listview">
+        <thead>
+            <td>Title</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Created</td>
+        </thead>
+        {% for entry in user.entries %}
+            <tr>
+                <td><a href="{{ url_for('entry', entry_id=entry.id) }}">{{ entry.title }}</a></td>
+                <td>{{ entry.lat }}</td>
+                <td>{{ entry.long }}</td>
+                <td>{{ entry.created }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('list') }}"> back to list </a>
+{% endblock %}

@@ -24,11 +24,11 @@ body, .content, .nav {
     padding: 20px;
 }
 .toggle {
+    border: 1px solid black;
+    background-color: grey;
     display: flex;
     flex-flow: row nowrap;
     margin: auto;
-    border: 1px solid black;
-    background-color: grey;
 }
 .option {
     padding: 5px;
@@ -39,7 +39,9 @@ body, .content, .nav {
 form {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
     row-gap: 10px;
+    min-width: 600px;
     width: 50%;
     margin: auto;
 }
@@ -47,10 +49,13 @@ label {
     display: flex;
 }
 label span {
-    width: 50px;
+    width: 60px;
 }
 label input {
     flex: 1 1 auto;
+}
+#geolocation {
+    background-color: grey;
 }
 table {
     border-collapse: collapse;
@@ -67,6 +72,22 @@ td {
 #mapview {
     margin: auto;
 }
+.mapoptions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+}
+.mapbutton {
+    border: 1px solid black;
+    background-color: grey;
+    padding: 3px;
+}
+.mapalt {
+    font-size: 11px;
+    line-height: 14px;
+}
 #map {
     height: 400px;
     width: 600px;
@@ -75,6 +96,9 @@ td {
     padding: 2px;
     background-color: green;
     border-radius: 5px;
+}
+.markerWrapper.unverified {
+    background-color: yellow;
 }
 .markerWrapper:before {
     content: "";
@@ -85,6 +109,9 @@ td {
     border: solid 5px transparent;
     border-top-color: green;
     z-index: 1;
+}
+.markerWrapper.unverified:before {
+    border-top-color: yellow;
 }
 .markerIcon {
     height: 22px;
@@ -105,4 +132,13 @@ td {
     padding: 5px;
     background-color: white;
     border-radius: 5px;
+}
+@media screen and (max-width: 600px) {
+    #map {
+        height: unset;
+        width: 100%;
+    }
+    form {
+        min-width: unset;
+    }
 }

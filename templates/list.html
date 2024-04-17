@@ -3,11 +3,11 @@
 {% block content %}
     <h2>All Entries</h2>
     <div class="toggle">
-        <div class="option tog active" onclick="toggleList(true)">list</div>
-        <div class="option tog" onclick="toggleList(false)">map</div>
+        <div class="option tog active" onclick="toggleList(false)">map</div>
+        <div class="option tog" onclick="toggleList(true)">list</div>
     </div>
     <div class="content">
-        <table id="listview">
+        <table id="listview" hidden>
             <thead>
                 <td>Title</td>
                 <td>Latitude</td>
@@ -19,11 +19,14 @@
                     <td><a href="{{ url_for('entry', entry_id=entry.id) }}">{{ entry.title }}</a></td>
                     <td>{{ entry.lat }}</td>
                     <td>{{ entry.long }}</td>
-                    <td>{{ entry.created }} by {{ entry.author }}</td>
+                    <td>{{ entry.created }} by <a href="{{ url_for('user', user_id=entry.user.id) }}">{{ entry.user.name }}</a></td>
                 </tr>
             {% endfor %}
         </table>
-        <div id="mapview" hidden>
+        <div id="mapview">
+            <div class="mapoptions">
+                <div class="mapbutton active" onclick="updateUserLocation(window.geoMarker, window.map)">see current location</div>
+            </div>
             <div id="map"></div>
         </div>
     </div>

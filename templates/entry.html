@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
-{% set active_page = '' %}
+{% set active_page = 'entry' %}
+{% set entries = [entry] %}
 {% block content %}
-    <h2>{{ entry['title'] }}</h2>
+    <h2>{{ entry.title }}</h2>
     <div>
-        <span>Created {{ entry['created'] }} by {{ entry['author'] }}</span>
+        <span>Created {{ entry.created }} by <a href="{{ url_for('user', user_id=entry.user.id) }}">{{ entry.user.name }}</a></span>
         <br />
         Position (lat, long):
-        <span>[{{ entry['lat'] }},</span>
-        <span>{{ entry['long'] }}]</span>
+        <span>[{{ entry.lat }},</span>
+        <span>{{ entry.long }}]</span>
     </div>
     <a href="{{ url_for('list') }}"> back to list </a>
+    <div id="mapview">
+        <div id="map"></div>
+    </div>
 {% endblock %}
