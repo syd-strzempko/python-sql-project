@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% set active_page = 'about' %}
 {% block content %}
-    <h2>About</h2>
-    <div class="content">
-        <p>For trans/gender nonconforming individuals, going to public venues such as bars, coffee shops, and restaurants can often be a fraught experience. Public scrutiny, mismatch in name or appearance between identity or payment methods, and being faced with the decision of which bathroom to use when there are only two distinct options is a constant calculation and risk mitigation exercise that is exhausting for people who simply want to exist in public spaces. Although there are often too many factors in the equation to guarantee a feeling of complete safety, one major step is the introduction of gender neutral or gender nonspecific restrooms with signage indicating such. Just the simple existence of these facilities can remove so much anxiety, and yet it is exceedingly difficult to know beforehand what to expect.</p>
-        <p>The goal of this project is to create a crowdsourcing site for identifying gender neutral/gender nonspecific restrooms. Using a SQLite database, Python Flask middleware, and Jinja templating incorporating Google Maps js API in the frontend, users are able to submit locations which indicate a public venue with these facilities.</p>
-        <p>Access to restroom facilities with a minimum of anxiety, dysphoria, or feelings of unsafety is an expectation many have but few who do not identify outside the gender binary consider. To make these spaces available and easily identifiable is a step towards a more equitable society where the implicit privelege of some becomes the explicit right for all!</p>
-        <p><a href="{{ url_for('list') }}">Find a gender neutral restroom near me!</a></p>
+    <div class="header">
+        <div class="text">About</div>
+    </div>
+    <div class="body copy">
+        <div class="section">For trans/gender nonconforming individuals, going to public venues such as bars, coffee shops, and restaurants can often be a fraught experience. Public scrutiny, mismatch in name or appearance between identity or payment methods, and being faced with the decision of which bathroom to use when there are only two distinct options is a constant calculation and risk mitigation exercise that is exhausting for people who simply want to exist in public spaces. Although there are often too many factors in the equation to guarantee a feeling of complete safety, one major step is the introduction of gender neutral or gender nonspecific restrooms with signage indicating such. Just the simple existence of these facilities can remove so much anxiety, and yet it is exceedingly difficult to know beforehand what to expect.</div>
+        <div class="section">The goal of this project is to create a crowdsourcing site for identifying gender neutral/gender nonspecific restrooms. Using a SQLite database, Python Flask middleware, and Jinja templating incorporating Google Maps js API in the frontend, users are able to submit locations which indicate a public venue with these facilities.</div>
+        <div class="section">Access to restroom facilities with a minimum of anxiety, dysphoria, or feelings of unsafety is an expectation many have but few who do not identify outside the gender binary consider. To make these spaces available and easily identifiable is a step towards a more equitable society where the implicit privelege of some becomes the explicit right for all!</div>
+        <div class="section"><a href="{{ url_for('list') }}">Find a gender neutral restroom near me!</a></div>
     </div>
 {% endblock %}

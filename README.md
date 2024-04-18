@@ -12,9 +12,6 @@ Access to restroom facilities with a minimum of anxiety, dysphoria, or feelings 
 
 TODO: Install on website
 
-- CSV default for these locations?
-- notes?
-
 ### Installation
 
 #### Python Version Management

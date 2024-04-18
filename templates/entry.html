@@ -2,16 +2,22 @@
 {% set active_page = 'entry' %}
 {% set entries = [entry] %}
 {% block content %}
-    <h2>{{ entry.title }}</h2>
-    <div>
-        <span>Created {{ entry.created }} by <a href="{{ url_for('user', user_id=entry.user.id) }}">{{ entry.user.name }}</a></span>
-        <br />
-        Position (lat, long):
-        <span>[{{ entry.lat }},</span>
-        <span>{{ entry.long }}]</span>
+    <div class="header">
+        <div class="text">{{ entry.title }}</div>
     </div>
-    <a href="{{ url_for('list') }}"> back to list </a>
-    <div id="mapview">
-        <div id="map"></div>
+    <div class="body">
+        <div class="section">
+            <div>
+                <div>Created by <a href="{{ url_for('user', user_id=entry.user.id) }}">{{ entry.user.name }}</a></div>
+                <div>{{ entry.created }}</div>
+                <div>Position (lat, long):</div>
+                <div>[{{ entry.lat }}, {{ entry.long }}]</div>
+            </div>
+            <div id="mapview">
+                <div id="map"></div>
+            </div>
+            <div><a href="{{ url_for('list') }}"> back to list </a></div>
+        </div>
     </div>
+
 {% endblock %}

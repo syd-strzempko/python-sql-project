@@ -24,6 +24,7 @@
     <div class="content">
         {% block content %} {% endblock %}
     </div>
+    <div class="footer"><a href="https://syd-strzempko.github.io/" target="_blank" rel="noopener noreferrer">(c) 2024 Syd Strzempko</a></div>
     <script src="{{ url_for('static', filename= 'js/utilities.js') }}"></script>
     {% if active_page == 'list' or active_page == 'entry' or active_page == 'new' %}
       <script>

@@ -26,6 +26,7 @@ async function loadMap(entries) {
 
     map = new Map(document.getElementById("map"), {
         zoom: 11,
+        maxZoom: 17,
         center: defaultPosition,
         mapId: key,
     });
@@ -41,7 +42,7 @@ async function loadMap(entries) {
             marker.addListener("click", () => toggleDetails(marker));
             bounds.extend(position);
         });
-        map.fitBounds(bounds);
+        await map.fitBounds(bounds);
     }
     return map;
 };
@@ -100,7 +101,9 @@ function initUserLocation(map) {
                     gmpDraggable: (window.location.pathname.includes('new')),
                     title: 'Selected Location'
                 });
-                map.setCenter(position);
+                if (!(window.location.pathname.includes('entry'))) {
+                    map.setCenter(position);
+                }
                 document.getElementById("geolocation")?.setAttribute("value", `${position.lat.toString()},${position.lng.toString()}`);
                 if (window.location.pathname.includes('new')) {
                     geoMarker.addListener("dragend", (event) => {
@@ -115,7 +118,7 @@ function initUserLocation(map) {
                 console.log(error);
               },
             );
-        } else {
+        } else if (window.location.pathname.includes('new')) {
             // Location not enabled; set to default Austin
             geoMarker = new google.maps.marker.AdvancedMarkerElement({
                 map,
@@ -123,7 +126,9 @@ function initUserLocation(map) {
                 gmpDraggable: true,
                 title: 'Selected Location'
             });
-            map.setCenter(position);
+            if (!(window.location.pathname.includes('entry'))) {
+                map.setCenter(position);
+            }
             document.getElementById("geolocation")?.setAttribute("value", `${position.lat.toString()},${position.lng.toString()}`);
             geoMarker.addListener("dragend", (event) => {
                 const position = geoMarker.position;
